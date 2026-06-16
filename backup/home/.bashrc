@@ -108,3 +108,15 @@ fi
 # ── Bash completion ───────────────────────────────────────────
 [ -r /data/data/com.termux/files/usr/share/bash-completion/bash_completion ] && \
   . /data/data/com.termux/files/usr/share/bash-completion/bash_completion
+
+# ── fzf (fuzzy finder) ───────────────────────────────────────
+[ -f /data/data/com.termux/files/usr/share/fzf/key-bindings.bash ] && \
+  source /data/data/com.termux/files/usr/share/fzf/key-bindings.bash
+[ -f /data/data/com.termux/files/usr/share/fzf/completion.bash ] && \
+  source /data/data/com.termux/files/usr/share/fzf/completion.bash
+
+# ── Auto-start fish ──────────────────────────────────────────
+if [ -z "$FISH" ] && [ -z "$BASH_EXECUTION_STRING" ] && [ "$(ps -p $$ -o comm=)" != "fish" ]; then
+  export FISH=1
+  fish
+fi

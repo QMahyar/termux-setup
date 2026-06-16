@@ -31,7 +31,7 @@ err()  { echo -e "\033[1;31m[!!]\033[0m $*"; }
 backup_packages() {
   msg "Backing up installed packages..."
   mkdir -p "$BACKUP_DIR"
-  dpkg --get-selections | grep -v deinstall > "$PACKAGE_LIST"
+  dpkg --list 2>/dev/null | grep "^ii" | awk '{print $2"\t\tinstall"}' > "$PACKAGE_LIST"
   local count
   count=$(wc -l < "$PACKAGE_LIST")
   msg "  → $count packages saved to $PACKAGE_LIST"
@@ -79,13 +79,14 @@ backup_ssh() {
   fi
 }
 
-# ── 6. Save custom scripts in termux-setup ──────────────────────────────────
-backup_self() {
-  msg "Saving restore and layout scripts..."
-  # The scripts are already in termux-setup, just ensure they're in the right place
-  if [ -f "$SCRIPT_DIR/restore.sh" ]; then
-    cp "$SCRIPT_DIR/restore.sh" "$BACKUP_DIR/restore.sh"
-    msg "  → restore.sh saved"
+# ── 6. Save Fish config ─────────────────────────────────────────────────────
+backup_fish() {
+  local fish_src=~/.config/fish/config.fish
+  if [ -f "$fish_src" ]; then
+    msg "Backing up Fish config..."
+    mkdir -p "$BACKUP_DIR/fish"
+    cp "$fish_src" "$BACKUP_DIR/fish/config.fish"
+    msg "  → config.fish saved"
   fi
 }
 
@@ -142,7 +143,7 @@ main() {
   backup_dotfiles
   backup_gitconfig
   backup_ssh
-  backup_self
+  backup_fish
   generate_manifest
 
   echo ""
