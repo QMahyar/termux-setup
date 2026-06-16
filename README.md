@@ -4,7 +4,7 @@ Your personal Termux environment backed up to GitHub.
 
 ## What's Inside
 
-```
+```text
 ├── backup.sh              # Backup script (save configs + packages)
 ├── restore.sh             # Restore script (for new devices)
 ├── setup.sh               # One-time init (backup + GitHub push)
@@ -44,6 +44,7 @@ bash backup.sh --push
 
 ## Extra Keys Layout
 
-The bottom button row includes: ESC, TAB, BKSP⌫, DEL⌦, HOME⇱, ↑, END⇲, PGUP⇑, PGDN⇓, CTRL, ALT, SHIFT, ⌨KBD, ←↓→, SPACE, ENTER↲.
+The bottom button row includes: ESC, TAB, BKSP⌫, DEL⌦, HOME⇱, ↑,
+END⇲, PGUP⇑, PGDN⇓, CTRL, ALT, SHIFT, ⌨KBD, ←↓→, SPACE, ENTER↲.
 
 Swipe up on any key for secondary actions (popups).
