@@ -76,13 +76,13 @@ soft-keyboard-toggle-behaviour = enable/disable
 # =============================================================================
 # CUSTOM EXTRA KEYS LAYOUT — "Developer PC" by request
 # =============================================================================
-# Row 1 (top):    ESC   TAB   ⌫BKSP  ⌦DEL   ⇑PGUP  ⇓PGDN   @      "      ⌨
-# Row 2 (middle):  SFT    \      :      =      !      '     ⇱HOME    ↑    ⇲END
-# Row 3 (bottom):  CTL   ALT     #      &     SPC    ↲ENTER  ←      ↓      →
+# Row 1 (top):    ESC   TAB   ⌫BKSP  ⌦DEL   ⇱HOME   ↑   ⇲END   ⇑PGUP   ⇓PGDN
+# Row 2 (middle):  SFT   ⌨KBD   ←     ↓      →      \     :      =       !
+# Row 3 (bottom):  CTL   ALT    #     &     SPC    ↲ENTER  @     "      '
 #
 # Popups (swipe up on a key):
-#   BKSP⌫  →  ⌦DEL        ⇑PGUP  →  | (pipe)
-#   ⌦DEL   →  BKSP⌫        ⇓PGDN  →  / (slash)
+#   BKSP⌫  →  ⌦DEL        PGUP⇑  →  | (pipe)
+#   ⌦DEL   →  BKSP⌫        PGDN⇓  →  / (slash)
 #   ⇱HOME  →  ~ (tilde)   SPC    →  _ (underscore)
 #   ⇲END   →  $ (dollar)   ↲ENTER →  ; (semicolon)
 # =============================================================================
@@ -92,22 +92,22 @@ extra-keys = [ \
     'TAB', \
     {key: 'BKSP', display: '⌫', popup: {key: 'DEL', display: '⌦'}}, \
     {key: 'DEL', display: '⌦', popup: {key: 'BKSP', display: '⌫'}}, \
+    {key: 'HOME', display: '⇱', popup: '~'}, \
+    'UP', \
+    {key: 'END', display: '⇲', popup: '$'}, \
     {key: 'PGUP', display: '⇑', popup: '|'}, \
-    {key: 'PGDN', display: '⇓', popup: '/'}, \
-    '@', \
-    {key: 'QUOTE', display: '"'}, \
-    {key: 'KEYBOARD', display: '⌨'} \
+    {key: 'PGDN', display: '⇓', popup: '/'} \
   ], \
   [ \
     {key: 'SHIFT', display: 'SFT'}, \
-    'BACKSLASH', \
+    {key: 'KEYBOARD', display: '⌨'}, \
+    'LEFT', \
+    'DOWN', \
+    'RIGHT', \
+    {key: 'BACKSLASH', display: '\\'}, \
     ':', \
     '=', \
-    '!', \
-    'APOSTROPHE', \
-    {key: 'HOME', display: '⇱', popup: '~'}, \
-    'UP', \
-    {key: 'END', display: '⇲', popup: '$'} \
+    '!' \
   ], \
   [ \
     {key: 'CTRL', display: 'CTL'}, \
@@ -116,9 +116,9 @@ extra-keys = [ \
     '&', \
     {key: 'SPACE', display: 'SPC', popup: '_'}, \
     {key: 'ENTER', display: '↲', popup: ';'}, \
-    'LEFT', \
-    'DOWN', \
-    'RIGHT' \
+    '@', \
+    {key: 'QUOTE', display: '"'}, \
+    {key: 'APOSTROPHE', display: "'"} \
   ] \
 ]
 
