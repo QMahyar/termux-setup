@@ -44,6 +44,9 @@ bash backup.sh --push
 
 ## Extra Keys Layout
 
+See [pi-termux](https://github.com/QMahyar/pi-termux) for the pi agent skill
+and full extra keys reference.
+
 The bottom button row includes: ESC, TAB, BKSP⌫, DEL⌦, HOME⇱, ↑,
 END⇲, PGUP⇑, PGDN⇓, CTRL, ALT, SHIFT, ⌨KBD, ←↓→, SPACE, ENTER↲.
 
