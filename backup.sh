@@ -8,7 +8,8 @@
 #   • ~/.bashrc and other shell configs
 #   • ~/.gitconfig
 #   • ~/.ssh/ (authorized keys)
-#   • ~/termux-setup/ itself (this script, restore script, layouts)
+#   • Fish config (custom prompt, aliases, zoxide, fzf)
+#   • Repo scripts (bootstrap.sh, restore.sh, README.md, termux.properties)
 #
 # Run: bash backup.sh
 # Then push to GitHub: bash backup.sh --push
@@ -22,6 +23,9 @@ TIMESTAMP=$(date '+%Y-%m-%d_%H%M%S')
 PACKAGE_LIST="$BACKUP_DIR/packages.txt"
 TERMUX_DIR="$BACKUP_DIR/home/.termux"
 DOTFILES_DIR="$BACKUP_DIR/home"
+
+# Files that live in the repo root and should be snapshot into backup/
+REPO_SCRIPTS="bootstrap.sh restore.sh README.md termux.properties"
 
 msg()  { echo -e "\033[1;32m[*]\033[0m $*"; }
 warn() { echo -e "\033[1;33m[!]\033[0m $*"; }
@@ -90,7 +94,18 @@ backup_fish() {
   fi
 }
 
-# ── 7. Generate status report ──────────────────────────────────────────────
+# ── 7. Snapshot repo scripts into backup/ ───────────────────────────────────
+backup_self() {
+  msg "Snapshotting repo scripts into backup/..."
+  for script in $REPO_SCRIPTS; do
+    if [ -f "$SCRIPT_DIR/$script" ]; then
+      cp "$SCRIPT_DIR/$script" "$BACKUP_DIR/$script"
+      msg "  → $script saved"
+    fi
+  done
+}
+
+# ── 8. Generate status report ──────────────────────────────────────────────
 generate_manifest() {
   local pkg_count
   pkg_count=$(wc -l < "$PACKAGE_LIST")
@@ -144,6 +159,7 @@ main() {
   backup_gitconfig
   backup_ssh
   backup_fish
+  backup_self
   generate_manifest
 
   echo ""
