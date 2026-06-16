@@ -4,7 +4,7 @@
 
 # ── Customise this ────────────────────────────────────────────
 # Change the greeting name to whatever you like:
-NAME="Mahyar"  # change this to your name
+NAME=""  # set your name here (optional)
 # ──────────────────────────────────────────────────────────────
 
 # ── Style helpers ──
