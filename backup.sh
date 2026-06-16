@@ -108,7 +108,6 @@ EOF
 push_to_github() {
   msg "Pushing to GitHub..."
 
-  # Check if we have a remote configured
   cd "$SCRIPT_DIR"
   if ! git remote get-url origin &>/dev/null; then
     warn "No git remote 'origin' configured."
@@ -116,13 +115,10 @@ push_to_github() {
     return 1
   fi
 
-  # Copy backup into the repo
-  rm -rf "$SCRIPT_DIR/backup"
-  mkdir -p "$SCRIPT_DIR/.backup"
-  cp -r "$BACKUP_DIR"/* "$SCRIPT_DIR/.backup/" 2>/dev/null || true
-
-  # Stage, commit, push
+  # Stage all changes in the repo (backup/ dir, scripts, etc.)
   git add -A
+
+  # Only commit+push if there are actual changes
   if git diff --cached --quiet; then
     msg "  → Nothing new to commit (up to date)"
   else

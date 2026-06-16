@@ -1,0 +1,6 @@
+Termux Backup — 2026-06-16_133054
+━━━━━━━━━━━━━━━━━━━━━━━
+Packages:  189
+Hostname:  localhost
+Android:   13
+Device:    2201117SG

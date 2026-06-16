@@ -1,0 +1,6 @@
+# Temp / cache
+*~
+*.swp
+*.tmp
+__pycache__/
+node_modules/
